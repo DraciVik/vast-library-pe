@@ -9,7 +9,23 @@ function fetchUrl(_a) {
         throw new Error(url + " fetch failed");
     };
     var request = require("request");
-    request(url, function (error, response, body) {
+	
+	var q = url.indexOf('?');
+	if (q === -1 )
+	{	
+		var url = url + '?rand=' + Math.floor(Math.random() * 10000000);
+	} else {
+		var url = url + '&rand=' + Math.floor(Math.random() * 10000000);	
+	}	
+	
+	var options = {
+	  url: url,
+	  headers: {
+		'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'
+	  }
+	};
+	
+    request(options, function (error, response, body) {
         if (error) {
             fail();
         }
