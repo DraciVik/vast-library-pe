@@ -1,11 +1,13 @@
 interface FetchOptions {
   url: string;
+  headers?: object;
   loadCallback?: (response: string) => void;
   syncInBrowser?: boolean;
 }
 
 export function fetchUrl({
   url,
+  headers = {},
   loadCallback = () => {},
   syncInBrowser = false
 }: FetchOptions) {
@@ -19,6 +21,9 @@ export function fetchUrl({
   const fetchReq = new XMLHttpRequest();
   if (syncInBrowser) {
     fetchReq.open("GET", url, false);
+    Object.keys(headers).forEach(header => {
+      fetchReq.setRequestHeader(header, headers[header])
+    })
     fetchReq.send();
     if (fetchReq.status === 200) {
       loadCallback(fetchReq.responseText);
@@ -28,6 +33,9 @@ export function fetchUrl({
     }
   } else {
     fetchReq.open("GET", url, true);
+    Object.keys(headers).forEach(header => {
+      fetchReq.setRequestHeader(header, headers[header])
+    })
     fetchReq.onerror = fail;
     fetchReq.onload = res => {
       loadCallback((res as any).responseText);
