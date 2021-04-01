@@ -1,6 +1,6 @@
 {
   "name": "vast-library-pe",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "An intuitive standard IAB Vast XML generation API. Complient with specifications Vast 2.0 / 3.0 / 4.0 / 4.1",
   "author": "David Babel",
   "thanks": "https://www.paypal.me/devilhunter/4",
@@ -63,7 +63,7 @@
     "@types/expect-puppeteer": "^3.3.1",
     "@types/fs-extra": "^5.1.0",
     "@types/jest": "^24.0.12",
-    "@types/jest-environment-puppeteer": "^4.0.0",
+    "@types/jest-environment-puppeteer": "4.0.0",
     "@types/js-yaml": "^3.12.1",
     "@types/nock": "^10.0.2",
     "@types/prettier": "^1.16.3",
