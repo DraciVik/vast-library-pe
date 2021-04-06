@@ -122,6 +122,7 @@ export function downloadVastAndWrappersAsync(
       }
     },
     syncInBrowser: true,
-    url: vastUrl
+    url: vastUrl,
+    headers: options.headers
   });
 }

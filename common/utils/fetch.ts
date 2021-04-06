@@ -1,11 +1,13 @@
 interface FetchOptions {
   url: string;
+  headers?: object;
   loadCallback?: (response: string) => void;
   syncInBrowser?: boolean;
 }
 
 export function fetchUrl({
   url,
+  headers = {},
   loadCallback = () => {},
   syncInBrowser = false
 }: FetchOptions) {
@@ -17,7 +19,7 @@ export function fetchUrl({
   };
 
   const request = require("request");
-  request(url, (error, response, body) => {
+  request({url, headers}, (error, response, body) => {
     if (error) {
       fail();
     }
